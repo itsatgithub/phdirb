@@ -504,7 +504,7 @@ endif;
 <!-- Different code if the application is PhD or Postdoc -->
 		<?php
 if ($this->params->get('phdConfig_Application') == 1)
-  {
+{
 ?>
 <!-- PhD information -->
 
@@ -535,10 +535,10 @@ if ($this->params->get('phdConfig_Application') == 1)
         foreach ($this->applicant->academic_data_academic as $academic_data):
 ?>
 	<tr>
-		<td><?
+		<td><?php
             echo $academic_data->degree;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->university;
 ?></td>
 		<?php
@@ -546,11 +546,11 @@ if ($this->params->get('phdConfig_Application') == 1)
 ?>
 		<!-- No write, no input form -->
 		<td align='center'><a
-			href='<?
+			href='<?php
                 echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?
+?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?php
                 echo $academic_data->id;
-?>&id=<?
+?>&id=<?php
                 echo $this->applicant->id;
 ?>'
 			onClick="return confirm('Are you sure you want to delete this academic data?');"
@@ -664,9 +664,9 @@ if ($this->params->get('phdConfig_Application') == 1)
 <!-- No write, no input form -->
 
 		<?php
-  }
+}
 else
-  {
+{
 ?>
 <!-- PostDoctoral information -->
 
@@ -715,18 +715,18 @@ else
         foreach ($this->applicant->academic_data_postdoctoral as $academic_data):
 ?>
 	<tr>
-		<td><?
+		<td><?php
             echo $academic_data->university;
 ?></td>
-		<!--td><? //echo $academic_data->institution; 
+		<!--td><?php //echo $academic_data->institution; 
 ?></td-->
-		<td><?
+		<td><?php
             echo $academic_data->start_date;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->end_date;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->country;
 ?></td>
 		<?php
@@ -734,11 +734,11 @@ else
 ?>
 		<!-- No write, no input form -->
 		<td align='center'><a
-			href='<?
+			href='<?php
                 echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?
+?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?php
                 echo $academic_data->id;
-?>&id=<?
+?>&id=<?php
                 echo $this->applicant->id;
 ?>'
 			onClick="return confirm('Are you sure you want to delete this academic data?');"
@@ -943,24 +943,24 @@ else
         foreach ($this->applicant->academic_data_doctoral as $academic_data):
 ?>
 	<tr>
-		<td><?
+		<td><?php
             echo $academic_data->degree;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->university;
 ?></td>
-		<!--td><? //echo $academic_data->institution; 
+		<!--td><?php //echo $academic_data->institution; 
 ?></td-->
-		<td><?
+		<td><?php
             echo $academic_data->start_date;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->end_date;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->country;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->director_name;
 ?></td>
 		<?php
@@ -968,11 +968,11 @@ else
 ?>
 		<!-- No write, no input form -->
 		<td align='center'><a
-			href='<?
+			href='<?php
                 echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?
+?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?php
                 echo $academic_data->id;
-?>&id=<?
+?>&id=<?php
                 echo $this->applicant->id;
 ?>'
 			onClick="return confirm('Are you sure you want to delete this academic data?');"><IMG
@@ -1205,22 +1205,22 @@ else
         foreach ($this->applicant->academic_data_academic as $academic_data):
 ?>
 	<tr>
-		<td><?
+		<td><?php
             echo $academic_data->degree;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->university;
 ?></td>
-		<!-- <td><?
+		<!-- <td><?php
             echo $academic_data->start_date;
 ?></td> -->
-		<td><?
+		<td><?php
             echo $academic_data->country;
 ?></td>
-		<td><?
+		<td><?php
             echo $academic_data->end_date;
 ?></td>
-		<!-- <td><?
+		<!-- <td><?php
             echo $academic_data->director_name;
 ?></td> -->
 		<?php
@@ -1228,11 +1228,11 @@ else
 ?>
 		<!-- No write, no input form -->
 		<td align='center'><a
-			href='<?
+			href='<?php
                 echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?
+?>?option=com_phd&controller=applicant&task=del_academic_data&academic_data_id=<?php
                 echo $academic_data->id;
-?>&id=<?
+?>&id=<?php
                 echo $this->applicant->id;
 ?>'
 			onClick="return confirm('Are you sure you want to delete this academic data?');"><IMG
@@ -1418,7 +1418,7 @@ else
 <!-- No write, no input form -->
 
 		<?php
-  } // closing the main if between Postdoc or phd
+} // closing the main if between Postdoc or phd
 ?>
 
 		<?php
@@ -1477,7 +1477,7 @@ if (count($this->applicant->files) > 0):
     foreach ($this->applicant->files as $file):
 ?>
 	<tr>
-		<td><?
+		<td><?php
         echo $file->doc_type;
 ?></td>
 		<td><a
@@ -1488,18 +1488,18 @@ if (count($this->applicant->files) > 0):
         echo $file->filename;
 ?></a>
 		</td>
-		<td><?
+		<td><?php
         echo $file->description;
 ?></td>
 		<?php
         if ($this->rights == 'write'):
 ?>
 		<td align='center'><a
-			href='<?
+			href='<?php
             echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=applicant&task=del_file&file_id=<?
+?>?option=com_phd&controller=applicant&task=del_file&file_id=<?php
             echo $file->id;
-?>&id=<?
+?>&id=<?php
             echo $this->applicant->id;
 ?>'
 			onClick="return confirm('Are you sure you want to delete this file?');"><IMG
@@ -1982,18 +1982,18 @@ if ($this->params->get('phdConfig_Application') == '1'): //Only display for PhD
         foreach ($this->applicant->work_experience as $work_experience):
 ?>
 	<tr>
-		<td><?
+		<td><?php
             echo $work_experience->experience;
 ?></td>
 		<?php
             if (($this->rights == 'write')):
 ?>
 		<td align='center'><a
-			href='<?
+			href='<?php
                 echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=applicant&task=del_work_experience&work_experience_id=<?
+?>?option=com_phd&controller=applicant&task=del_work_experience&work_experience_id=<?php
                 echo $work_experience->id;
-?>&id=<?
+?>&id=<?php
                 echo $this->applicant->id;
 ?>'
 			onClick="return confirm('Are you sure you want to delete this work_experience?');"><IMG
@@ -2292,26 +2292,26 @@ endif;
  * Programmes panel
  */
 if ($this->params->get('phdConfig_Application') == 1)
-  {
+{
     echo $myTabs->startPanel(JText::_('PROGRAMMES_TAB'), 'tab6');
-  }
+}
 else
-  {
+{
     echo $myTabs->startPanel(JText::_('RESEARCH_GROUPS_TAB'), 'tab6');
-  }
+}
 ?>
 
 	<?php
 //Do not show intro data if i am a Group Leader
 if (!$this->iamgroupleader):
     if ($this->params->get('phdConfig_Application') == 1)
-      {
+    {
         echo JText::_('INTRO_PROGRAMMES');
-      }
+    }
     else
-      {
+    {
         echo JText::_('INTRO_RESEARCH_GROUPS');
-      }
+    }
 endif;
 ?>
 <br></br>
@@ -2330,13 +2330,13 @@ echo $this->action;
 		<tr class="sectiontableheader">
 			<th colspan='2' class="white"><?php
 if ($this->params->get('phdConfig_Application') == 1)
-  {
+{
     echo JText::_('PROGRAMMES_TITLE');
-  }
+}
 else
-  {
+{
     echo JText::_('RESEARCH_GROUPS_TITLE');
-  }
+}
 ?></th>
 		</tr>
 	</thead>
@@ -2690,7 +2690,7 @@ endif;
 
 // administrator can always change everything
 if ($this->iamadministrator)
-  {
+{
     echo $myTabs->startPanel(JText::_('STATUS_TAB'), 'tab8');
 ?>
 <form action="<?php
@@ -2753,13 +2753,13 @@ if ($this->iamadministrator)
 	</tr>
 </table>
 </form>
-			<?
+			<?php
     echo $myTabs->endPanel();
-  }
+}
 
 // applicants with status = editing can submit the application
 if (!($this->iamadministrator || $this->iamgroupleader || $this->iamcommittee) && ($this->applicant->status_id == 1))
-  {
+{
     echo $myTabs->startPanel(JText::_('STATUS_TAB'), 'tab8');
     
     echo JText::_('INTRO_STATUS');
@@ -2816,13 +2816,13 @@ if (!($this->iamadministrator || $this->iamgroupleader || $this->iamcommittee) &
 	</tr>
 </table>
 </form>
-		<?
+		<?php
     echo $myTabs->endPanel();
-  }
+}
 
 // applicants with status != editing can see their status
 if (!($this->iamadministrator || $this->iamgroupleader || $this->iamcommittee) && ($this->applicant->status_id != 1) && ($this->applicant->status_id))
-  {
+{
     echo $myTabs->startPanel(JText::_('STATUS_TAB'), 'tab8');
 ?>
 <table width='100%' border='0'>
@@ -2842,9 +2842,9 @@ if (!($this->iamadministrator || $this->iamgroupleader || $this->iamcommittee) &
 ?>.</b></td>
 	</tr>
 </table>
-			<?
+			<?php
     echo $myTabs->endPanel();
-  }
+}
 
 // end Pane
 echo $myTabs->endPane();
