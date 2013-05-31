@@ -63,7 +63,8 @@ class JHTMLPhdInstallHelper
       {
           //Código extraido de JFusion
           ob_start();
-          $url = 'https://joomlavui.svn.sourceforge.net/svnroot/joomlavui/trunk/administrator/components/com_phd/phd.xml';
+          
+          $url = 'https://phdirb.googlecode.com/svn/trunk/administrator/components/com_phd/phd.xml';
           
           if (function_exists('curl_init')) {
               //curl is the preferred function
