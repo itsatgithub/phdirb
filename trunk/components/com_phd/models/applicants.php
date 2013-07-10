@@ -162,7 +162,7 @@ class PhdModelApplicants extends JModel
 			$where[] = 'pro.user_username = \'' . $user->username . '\'';
 			// 2011-02-16 List only first choice
 			if ($phdConfig_FirstChoice == '1') {
-				$where[] = 'ap.order = 1'; // just first choice
+				$where[] = "`ap`.`order` = 1"; // just first choice
 			}
 		}
 
