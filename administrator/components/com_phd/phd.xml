@@ -2,10 +2,10 @@
 <install type="component" version="1.5.0" method="upgrade">
 	<name>PhD</name>
 	<author>GPL@vui</author>
-	<creationDate>21/02/2011</creationDate>
+	<creationDate>10/07/2013</creationDate>
 	<license>GNU/GPL</license>
-	<version>1.9</version>
-	<description>PhD and Postdoc Programme aplication. Age on the excel.</description>
+	<version>1.10</version>
+	<description>PhD and Postdoc Programme aplication. Solucionado bug en la lista de applicants.</description>
 
 	<!-- installation part -->
 	<install>
