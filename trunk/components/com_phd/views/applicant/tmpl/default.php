@@ -70,7 +70,6 @@ if (!$this->iamgroupleader): //Do not show intro data if i am a Group Leader
     echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
 <br></br>
-<br></br>
 <?php
 endif;
 ?>
@@ -508,7 +507,6 @@ if (!$this->iamgroupleader): //Do not show intro data if i am a Group Leader
 		<?php
     echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
-<br></br>
 <br></br>
 		<?php
 endif;
@@ -1455,7 +1453,6 @@ if (!$this->iamgroupleader): //Do not show intro data if i am a Group Leader
     echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
 <br></br>
-<br></br>
 		<?php
 endif;
 ?>
@@ -1644,7 +1641,6 @@ if (!$this->iamgroupleader): //Do not show intro data if i am a Group Leader
 	<?php
     echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
-<br></br>
 <br></br>
 	<?php
 endif;
@@ -1969,7 +1965,6 @@ if ($this->params->get('phdConfig_Application') == '1'): //Only display for PhD
         echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
 <br></br>
-<br></br>
 	<?php
     endif;
 ?>
@@ -2122,7 +2117,6 @@ if ($this->params->get('phdConfig_Application') == '2'):
         echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
 <br></br>
-<br></br>
 	<?php
     endif;
 ?>
@@ -2220,7 +2214,6 @@ if ($this->params->get('phdConfig_Application') == '2'):
 	<?php
         echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
-<br></br>
 <br></br>
 	<?php
     endif;
@@ -2334,7 +2327,6 @@ endif;
 	<?php
 echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
-<br></br>
 <br></br>
 
 <form action="<?php
@@ -2567,7 +2559,6 @@ if (($this->iamadministrator) || ($this->iamgroupleader) || ($this->iamcommittee
         echo JText::_('COMPULSORY_FIELDS_TEXT');
 ?>
 <br></br>
-<br></br>
 		<?php
     endif;
 ?>
@@ -2778,10 +2769,8 @@ if (!($this->iamadministrator || $this->iamgroupleader || $this->iamcommittee) &
 {
     echo $myTabs->startPanel(JText::_('STATUS_TAB'), 'tab8');
     
-    echo JText::_('INTRO_STATUS');
+    // echo JText::_('INTRO_STATUS');
 ?>
-<br></br>
-<br></br>
 
 <form action="<?php
     echo $this->action;
