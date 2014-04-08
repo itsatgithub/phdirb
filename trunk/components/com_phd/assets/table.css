@@ -40,7 +40,7 @@ tbody tr:hover {
 }
 
 tbody tr:hover td {
-	color: #FFF;
+	color: #454545;
 }
 
 tfoot td,tfoot th {
@@ -97,4 +97,11 @@ tbody tr .thin {
 	border: 0 none;
 	float: right;
 	margin: 0px;
+}
+
+/* content tables */
+.mysectiontableheader {
+	background: #222222;
+	border-right: 1px solid #CCCCCC;
+	padding: 4px;
 }
