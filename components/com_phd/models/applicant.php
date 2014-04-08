@@ -550,8 +550,14 @@ class PhdModelApplicant extends JModel
 		$this->_db->setQuery( $query );
 		$file_details = $this->_db->loadObject();
 
-		$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$file_details->applicant_id.DS.$file_details->filename);
-		if (!JFile::delete($filepath)) {
+        $model =& JModel::getInstance( 'applicant', 'phdmodel' );
+        $model->setId( $file_details->applicant_id );
+        $applicant =& $model->getData();                 
+		
+        //$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$file_details->applicant_id.DS.$file_details->filename);
+		$filepath = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$file_details->filename);
+        
+        if (!JFile::delete($filepath)) {
 			//echo JText::_('ERROR_DELETING_FILE');
 			return false;
 		}
@@ -581,6 +587,10 @@ class PhdModelApplicant extends JModel
 		$params =& $mainframe->getParams();
 		$phdConfig_DocsPath = $params->get('phdConfig_DocsPath');
 
+		$model =& JModel::getInstance( 'applicant', 'phdmodel' );
+		$model->setId($applicant_id);
+		$applicant =& $model->getData();           
+
 		$query = "SELECT * FROM #__phd_referees WHERE id='$id_referee'";
 		$this->_db->setQuery($query);
 		if(!$this->_db->query()) {
@@ -590,8 +600,9 @@ class PhdModelApplicant extends JModel
 		$file_details = $this->_db->loadObject();
 
 		if (isset($file_details->filename)){
-			$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$file_details->applicant_id.DS.$file_details->filename);
-
+			//$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$file_details->applicant_id.DS.$file_details->filename);
+			$filepath = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$file_details->filename);
+				
 			if (!JFile::delete($filepath)) {
 				//echo JText::_('ERROR_DELETING_FILE');
 				return false;
