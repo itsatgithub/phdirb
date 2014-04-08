@@ -49,6 +49,8 @@ class TablePersonaldata extends JTable {
 	var $status_id = null;
 	var $submit_date = null;
 	var $committee_username = null;
+	var $scientific_discipline_id = null;
+
 	// 2014-04-04 Roberto Copiando el cambio de SIBEOS para phdlacaixa
 	var $directory = null;
 	
