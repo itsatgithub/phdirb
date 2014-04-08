@@ -535,7 +535,8 @@ class PhdControllerApplicant extends JController
 
 			//remove old file if exists
 			if (isset($post['old_filename'])){
-				$filepath_to_delete = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$post['old_filename']);
+				//$filepath_to_delete = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$post['old_filename']);
+				$filepath_to_delete = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$post['old_filename']);
 				if (!JFile::delete($filepath_to_delete)) {
 					$mainframe->enqueueMessage( JText::_('FILE_DELETION_KO') , 'error');
 					return;
