@@ -439,7 +439,17 @@ else:
 endif;
 ?></td>
 		</tr>
-
+		<tr class="sectiontableentry1">
+			<td width='15%' ><?php
+echo JText::_('SCIENTIFIC_DISCIPLINE');
+?>:
+			</td>
+			<td><?php
+echo ($this->rights == 'write') ? $this->lists['scientificdiscipline'] : $this->applicant->scientific_discipline;
+?>
+			</td>
+		</tr>
+		
 		<?php
 if (($this->rights == 'write')):
 ?>
