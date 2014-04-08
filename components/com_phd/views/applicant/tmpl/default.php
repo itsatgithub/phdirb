@@ -404,19 +404,22 @@ if ($this->rights == 'write'):
 ?> <input type='hidden'
 				name='MAX_FILE_SIZE' value='2097152' /> <input type='file'
 				class='inputbox' name='uploaded_file' /> <?php
-    echo ($this->applicant->career_breaks_filename) ? "<img src='./administrator/images/tick.png'> File Uploaded" : '';
+				echo ($this->applicant->career_breaks_filename) ? "<img src='./administrator/images/tick.png'> File Uploaded" : '';
 ?>
 
 				<?php
     if ($this->applicant->career_breaks_filename):
-?> <?php
+?> 
+    <a href='<?php echo $_SERVER['PHP_SELF'];
+?>?option=com_phd&controller=applicant&task=download_file&person=<?php echo $this->applicant->id; ?>&file=<?php echo $this->applicant->career_breaks_filename; ?>' target="_blank"><?php echo JText::_('LABEL_DOWNLOAD'); ?></a>
+    <?php /*
         $filepath = JPath::clean(JURI::base(true) . $this->params->get('phdConfig_DocsPath') . DS . $this->applicant->id . DS . $this->applicant->career_breaks_filename);
 ?> <a href='<?php
         echo $filepath;
 ?>' style="color: blue;"
 				target="_blank"><?php
         echo JText::_('LABEL_DOWNLOAD');
-?></a> <?php
+?></a> <?php */
     endif;
 ?>
 				<?php
@@ -1480,13 +1483,16 @@ if (count($this->applicant->files) > 0):
 		<td><?php
         echo $file->doc_type;
 ?></td>
-		<td><a
+		<td><!--a
 			href="<?php
-        echo JPath::clean(JURI::base(true) . $this->params->get('phdConfig_DocsPath') . DS . $this->applicant->id . DS . $file->filename);
+        //echo JPath::clean(JURI::base(true) . $this->params->get('phdConfig_DocsPath') . DS . $this->applicant->id . DS . $file->filename);
 ?>"
 			style="color: blue;" target="_blank"><?php
-        echo $file->filename;
-?></a>
+        //echo $file->filename;
+?></a-->
+<a href='<?php echo $_SERVER['PHP_SELF'];
+?>?option=com_phd&controller=applicant&task=download_file&person=<?php echo $this->applicant->id; ?>&file=<?php echo $file->filename; ?>' target="_blank"><?php echo $file->filename; ?></a>
+
 		</td>
 		<td><?php
         echo $file->description;

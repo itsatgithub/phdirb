@@ -8,6 +8,7 @@ jimport('joomla.utilities.date');
 jimport('joomla.filesystem.file');
 jimport('joomla.mail.mail');
 jimport('joomla.methods');
+jimport('joomla.error.log' );
 
 /**
  * Applicant Controller
@@ -50,6 +51,11 @@ class PhdControllerApplicant extends JController
 			$data['user_username'] = $user->username;
 			$data['status_id'] = '1';
 			$post['id'] = $model->savePersonalData($data);
+
+			// 2014-04-04 Roberto Copiando el cambio de SIBEOS para phdlacaixa
+			$data['id'] = $post['id'];
+			$data['directory'] = $post['id'].'-'.mt_rand(100000, 999999);
+			$model->savePersonalData($data);
 		}
 
 		$params =& $mainframe->getParams();
@@ -83,10 +89,18 @@ class PhdControllerApplicant extends JController
 		}
 
 		$file = JRequest::getVar('uploaded_file', '', 'FILES', 'array');
+		
 		if ((isset($file['name'])) && (!$file['error'])) {
-			$file['name']  = JFile::makeSafe($file['name']);
-			$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file['name']);
 
+			// 2014-04-04 Roberto Copiado del código de phdlacaixa
+			$model =& $this->getModel('applicant');
+			$model->setId($post['id']);
+			$applicant =& $model->getData();
+			
+			$file['name']  = JFile::makeSafe($file['name']);
+			//$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file['name']);
+			$filepath = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$file['name']);
+							
 			if (JFile::exists($filepath)) {
 				//$active_tab = ($phdConfig_Application== '1')?6:8;
 				JRequest::setVar('active_tab', $active_tab );
@@ -105,8 +119,9 @@ class PhdControllerApplicant extends JController
 			$model->setId($post['id']);
 			$applicant =& $model->getData();
 			if ($applicant->career_breaks_filename){
-				$filepath_to_delete = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$applicant->career_breaks_filename);
-
+				//$filepath_to_delete = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$applicant->career_breaks_filename);
+				$filepath_to_delete = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$applicant->career_breaks_filename);
+				
 				if (!JFile::delete($filepath_to_delete)) {
 					//$active_tab = ($phdConfig_Application== '1')?6:8;
 					JRequest::setVar('active_tab', $active_tab );
@@ -121,10 +136,16 @@ class PhdControllerApplicant extends JController
 		// this is the new file treatment for additional information
 		$file_additional = JRequest::getVar('additional_file', '', 'FILES', 'array');
 		if ((isset($file_additional['name'])) && (!$file_additional['error'])) {
+
+			$model =& $this->getModel('applicant');
+			$model->setId($post['id']);
+			$applicant =& $model->getData();
+			
 			$active_tab = ($phdConfig_Application== '1')?6:8;
 			$file_additional['name']  = JFile::makeSafe($file_additional['name']);
-			$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file_additional['name']);
-
+			//$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file_additional['name']);
+			$filepath = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$file['name']);
+				
 			if (JFile::exists($filepath)) {
 				JRequest::setVar('active_tab', $active_tab );
 				$mainframe->enqueueMessage( JText::_('FILE_EXISTS') , 'error');
@@ -142,8 +163,9 @@ class PhdControllerApplicant extends JController
 			$model->setId($post['id']);
 			$applicant =& $model->getData();
 			if ($applicant->additional_info_filename){
-				$filepath_to_delete = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$applicant->additional_info_filename);
-
+				//$filepath_to_delete = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$applicant->additional_info_filename);
+				$filepath_to_delete = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$applicant->additional_info_filename);
+				
 				if (!JFile::delete($filepath_to_delete)) {
 					JRequest::setVar('active_tab', $active_tab );
 					$mainframe->enqueueMessage( JText::_('ERROR_DELETING_FILE') , 'error');
@@ -400,8 +422,15 @@ class PhdControllerApplicant extends JController
 		$post = JRequest::get( 'post' );
 		$file = JRequest::getVar('uploaded_file', '', 'FILES', 'array');
 		$file['name']  = JFile::makeSafe($file['name']);
-		$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file['name']);
 
+		// Roberto 2014-04-04 Copiado el código de Albert
+		$model =& $this->getModel('applicant');
+		$model->setId($post['id']);
+		$applicant =& $model->getData();
+		
+		//$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file['name']);
+		$filepath = JPath::clean($phdConfig_DocsPath.DS.$applicant->directory.DS.$file['name']);
+		
 		if (JFile::exists($filepath)) {
 			JRequest::setVar('active_tab', '2' );
 			$mainframe->enqueueMessage( JText::_('FILE_EXISTS') , 'error');
@@ -489,7 +518,7 @@ class PhdControllerApplicant extends JController
 		$file = JRequest::getVar('uploaded_file', '', 'FILES', 'array');
 
 		// upload the file
-		if (isset($file['name']))
+		if ((isset($file['name'])) && (!empty($file['name'])))
 		{
 			$file['name']  = JFile::makeSafe($file['name']);
 			$filepath = JPath::clean(JPATH_ROOT.DS.$phdConfig_DocsPath.DS.$post['id'].DS.$file['name']);
@@ -604,7 +633,7 @@ class PhdControllerApplicant extends JController
 		$applicant_id = $get['id'];
 
 		$store = $model->deleteReferee($get['referee_id']);
-
+		
 		JRequest::setVar('view', 'applicant' );
 		JRequest::setVar('id', $applicant_id );
 		JRequest::setVar('active_tab', '3' );
@@ -945,6 +974,88 @@ class PhdControllerApplicant extends JController
 
 		return true;
 	}
+	
+	
+	/**
+	 * 2013-11-22 SIBEOS Download file, Download selected file and log the process
+	 *
+	 * @return file
+	 */
+	function download_file()
+	{
+		global $mainframe, $mosConfig_live_site;
+		$user =& JFactory::getUser();
+	
+		//get data from the request
+		$get = JRequest::get( 'get' );
+	
+		$params =& $mainframe->getParams();
+		$phdConfig_DocsPath = $params->get('phdConfig_DocsPath');
+	
+		$iamadministrator = JHTML::_('phdhelper.isAdministrator');
+		$iamgroupleader = JHTML::_('phdhelper.isGroupLeader');
+		$iamcommittee = JHTML::_('phdhelper.isCommittee');
+		 
+		//$directory = "/var/data/docs_phd/";    // the relative directory that has the downloads - can be ./ for the current directory
+		$filename = $get['file'];
+		$person = $get['person'];
+	
+		$model =& JModel::getInstance( 'applicant', 'phdmodel' );
+		$model->setId( $person );
+		$applicant =& $model->getData();
+	
+		if (!($iamadministrator || $iamgroupleader || $iamcommittee || ($user->username == $applicant->user_username))):
+		echo JText::_( 'ALERTNOTAUTH' );
+		return;
+		endif;
+	
+		$path = $phdConfig_DocsPath."/".$applicant->directory."/".$filename;
+	
+		$file_extension = strtolower(substr(strrchr($filename,"."),1));
+	
+		//This will set the Content-Type to the appropriate setting for the file
+		switch( $file_extension ) {
+			case "pdf": $ctype="application/pdf"; break;
+			case "doc": $ctype="application/msword"; break;
+	
+			//The following are for extensions that shouldn't be downloaded (sensitive stuff, like php files)
+			case "php":
+			case "htm":
+			case "html": die("<b>Cannot be used for ". $file_extension ." files!</b>"); break;
+	
+			default: $ctype="application/force-download";
+		}
+	
+		//LOG all downloads
+		$user 	=& JFactory::getUser();
+		$options = array('format' => "{DATE}\t{TIME}\t{IP}\t{NAME}\t{FILENAME}\t{APPLICANT}");
+		$ip_address = $_SERVER['REMOTE_ADDR'];
+		$log_filename= "file_access-".date( 'M-Y').".log";
+		$log = & JLog::getInstance($log_filename, $options);
+		//$log->addEntry(array("Date" => date('d-m-Y'),"Time" => date('h:i'),"IP" => $ip_address,"Name"=>$user->name,"Filename"=>$filename,"Applicant"=>$applicant->lastname.', '.$applicant->firstname));
+		$log->addEntry(array("Date" => date('d-m-Y'),"Time" => date('h:i'),"IP" => $ip_address,"Name"=>$user->name,"Filename"=>$filename,"Applicant"=>$applicant->firstname.' '.$applicant->lastname));
+		//END LOG
+	
+		//Begin writing headers
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Cache-Control: public");
+		header("Content-Description: File Transfer");
+	
+		//Use the switch-generated Content-Type
+		header("Content-Type: $ctype");
+	
+		//Force the download
+		$header="Content-Disposition: attachment; filename=".$filename.";";
+		header($header );
+		header("Content-Transfer-Encoding: binary");
+		header("Content-Length: ".filesize($path));
+		@readfile($path);
+		exit;
+	
+	}
+	
 
 }
 
