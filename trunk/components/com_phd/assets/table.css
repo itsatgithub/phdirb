@@ -36,11 +36,11 @@ tbody tr td {
 }
 
 tbody tr:hover {
-	background: #CCC url(tr_bck.gif) repeat;
+	background: #FFF url(tr_bck.gif) repeat;
 }
 
 tbody tr:hover td {
-	color: #CCC;
+	color: #FFF;
 }
 
 tfoot td,tfoot th {
