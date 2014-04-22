@@ -2,10 +2,10 @@
 <install type="component" version="1.5.0" method="upgrade">
 	<name>PhD</name>
 	<author>GPL@vui</author>
-	<creationDate>10/07/2013</creationDate>
+	<creationDate>22/04/2014</creationDate>
 	<license>GNU/GPL</license>
-	<version>1.10</version>
-	<description>PhD and Postdoc Programme aplication. Solucionado bug en la lista de applicants.</description>
+	<version>1.11</version>
+	<description>PhD and Postdoc Programme aplication. Cambios solicitados por Patricia.</description>
 
 	<!-- installation part -->
 	<install>
