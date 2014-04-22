@@ -218,7 +218,8 @@ class PhdControllerApplicant extends JController
 		$data['end_date'] = $post['end_date'];
 		$data['country_id'] = $post['country_id'];
 		$data['director_name'] = $post['director_name'];
-
+		$data['ongoing'] = ($post['ongoing']=='Yes')?true:false;;
+		
 		JRequest::setVar('view', 'applicant' );
 		JRequest::setVar('id', $applicant_id );
 		JRequest::setVar('active_tab', '1' );

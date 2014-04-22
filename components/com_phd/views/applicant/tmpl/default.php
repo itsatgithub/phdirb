@@ -531,6 +531,9 @@ if ($this->params->get('phdConfig_Application') == 1)
 			<th width='40%' class="white"><?php
         echo JText::_('UNIVERSITY');
 ?></th>
+                  	<th width='10%' class="white"><?php
+        echo JText::_('ONGOING');
+?></th>
 			<?php
         if (($this->rights == 'write')):
 ?>
@@ -551,6 +554,9 @@ if ($this->params->get('phdConfig_Application') == 1)
 ?></td>
 		<td><?php
             echo $academic_data->university;
+?></td>
+<td align='center'><?php
+            echo ($academic_data->ongoing)?"<img src='administrator/images/tick.png' title='".JText::_('ONGOING')."'>":'';
 ?></td>
 		<?php
             if (($this->rights == 'write')):
@@ -626,6 +632,20 @@ if ($this->params->get('phdConfig_Application') == 1)
         if ($this->rights == 'write'):
 ?> <input class="required"
 				type="text" name="university" size="50" maxlength="100" /> <?php
+        endif;
+?>
+			</td>
+		</tr>
+		<tr class="sectiontableentry1">
+			<td><?php
+        echo JText::_('ONGOING');
+?>: <?php
+        echo ($this->rights == 'read') ? "" : "<span style='color: red;'>*</span>";
+?>
+			</td>
+			<td><?php
+        if ($this->rights == 'write'):
+?> <input type="checkbox" name="ongoing" value="Yes" /> <?php
         endif;
 ?>
 			</td>
