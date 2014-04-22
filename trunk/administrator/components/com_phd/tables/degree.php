@@ -30,7 +30,8 @@ class TableDegree extends JTable {
 	var $end_date = null;
 	var $country_id = null;
 	var $director_name = null;
-
+	var $ongoing = null;
+	
 	/**
 	 * Constructor
 	 *
