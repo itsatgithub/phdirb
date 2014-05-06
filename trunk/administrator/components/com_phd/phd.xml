@@ -2,10 +2,10 @@
 <install type="component" version="1.5.0" method="upgrade">
 	<name>PhD</name>
 	<author>GPL@vui</author>
-	<creationDate>22/04/2014</creationDate>
+	<creationDate>06/05/2014</creationDate>
 	<license>GNU/GPL</license>
-	<version>1.11</version>
-	<description>PhD and Postdoc Programme aplication. Cambios solicitados por Patricia.</description>
+	<version>1.12</version>
+	<description>PhD and Postdoc Programme aplication. Solucionado bug en la subida de archivos del Referee.</description>
 
 	<!-- installation part -->
 	<install>

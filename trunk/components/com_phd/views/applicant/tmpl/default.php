@@ -1748,14 +1748,19 @@ if (count($this->applicant->referees) > 0):
 ?>
 		<td><?php
             if ($referee->filename):
-?> <a
+/*?> <a
 			href="<?php
                 echo JPath::clean(JURI::base(true) . $this->params->get('phdConfig_DocsPath') . DS . $this->applicant->id . DS . $referee->filename);
 ?>"
 			style="color: blue;" target="_blank"><?php
                 echo $referee->filename;
 ?></a>
-			<?php
+			<?php*/
+                ?>
+<a href='<?php echo $_SERVER['PHP_SELF'];
+?>?option=com_phd&controller=applicant&task=download_file&person=<?php echo $this->applicant->id; ?>&file=<?php echo $referee->filename; ?>' target="_blank"><?php echo $referee->filename; ?></a>                    
+                <?php
+                
             endif;
 ?> <!--
 		<?php
