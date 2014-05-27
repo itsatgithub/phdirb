@@ -581,7 +581,7 @@ class PhdModelApplicant extends JModel
 	 * @return	boolean	True on success
 	 * @since	1.5
 	 */
-	function deleteReferee($id_referee){
+	function deleteReferee($id_referee,$applicant_id){
 		global $mainframe;
 
 		$params =& $mainframe->getParams();
