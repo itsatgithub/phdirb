@@ -324,7 +324,7 @@ class PhdModelApplicant extends JModel
 			$applicant->files = array();
 			$applicant->selections = array();
 
-			// 2014-04-04 Roberto Copiando el código de SIBEOS
+			// 2014-04-04 Roberto Copiando el código de Albert Moreno
 			$applicant->directory = null;
 			
 			$this->_data = $applicant;

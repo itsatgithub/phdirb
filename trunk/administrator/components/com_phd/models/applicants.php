@@ -31,7 +31,8 @@ class PhdModelApplicants extends JModel
 	 */
 	function getExcelData()
 	{
-		$query = "SELECT a.id, a.firstname, a.lastname, c.printable_name, a.email, a.birth_date, w.description AS wheredidu"
+		$query = "SELECT a.id, a.firstname, a.lastname, c.printable_name, a.email"
+		. ", a.birth_date, w.description AS wheredidu, a.additional_info, a.submit_date"
 		. " FROM #__phd_applicants AS a"
 		. " LEFT JOIN #__phd_countries AS c ON c.id = a.country_id"
 		. " LEFT JOIN #__phd_wheredidu AS w ON w.id = a.wheredidu_id"

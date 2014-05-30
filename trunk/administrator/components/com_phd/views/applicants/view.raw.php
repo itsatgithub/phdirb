@@ -75,7 +75,9 @@ class PhdViewApplicants extends JView
 			$worksheet->write(0, 6, JText::_( 'Where did you learn about us?' ));
 			$worksheet->write(0, 7, JText::_( 'Recommendation letters' ));
 			$worksheet->write(0, 8, JText::_( 'Programmes of choice' ));
-
+			$worksheet->write(0, 9, JText::_( 'Additional info' ));
+			$worksheet->write(0, 10, JText::_( 'Submit date' ));
+				
 			$i = 2; // line index
 			foreach( $rows as $row )
 			{
@@ -109,6 +111,8 @@ class PhdViewApplicants extends JView
 				
 				// calculate age
 				$age = $this->calculateAge($row->birth_date);
+				
+				$submit_date = new JDate( $row->submit_date );
 
 				// writing the line
 				$worksheet->write( $i, 0, $row->firstname );
@@ -120,6 +124,8 @@ class PhdViewApplicants extends JView
 				$worksheet->write( $i, 6, $row->wheredidu );
 				$worksheet->write( $i, 7, $str_files );
 				$worksheet->write( $i, 8, $str_pro );
+				$worksheet->write( $i, 9, $row->additional_info );
+				$worksheet->write( $i, 10, $submit_date->toFormat( '%Y-%m-%d' ) );
 				
 				$i++;				
 			}
