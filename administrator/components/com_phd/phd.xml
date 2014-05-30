@@ -2,10 +2,10 @@
 <install type="component" version="1.5.0" method="upgrade">
 	<name>PhD</name>
 	<author>GPL@vui</author>
-	<creationDate>06/05/2014</creationDate>
+	<creationDate>30/05/2014</creationDate>
 	<license>GNU/GPL</license>
-	<version>1.12</version>
-	<description>PhD and Postdoc Programme aplication. Solucionado bug en la subida de archivos del Referee.</description>
+	<version>1.13</version>
+	<description>PhD and Postdoc Programme aplication. Añadidas dos columnas en el informe Excel.</description>
 
 	<!-- installation part -->
 	<install>

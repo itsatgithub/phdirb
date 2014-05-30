@@ -423,8 +423,8 @@ class PhdControllerApplicant extends JController
 		$post = JRequest::get( 'post' );
 		$file = JRequest::getVar('uploaded_file', '', 'FILES', 'array');
 		$file['name']  = JFile::makeSafe($file['name']);
-
-		// Roberto 2014-04-04 Copiado el código de Albert
+		
+		// Roberto 2014-04-04 Copiado el código de Albert Moreno
 		$model =& $this->getModel('applicant');
 		$model->setId($post['id']);
 		$applicant =& $model->getData();
@@ -438,7 +438,7 @@ class PhdControllerApplicant extends JController
 			parent::display();
 			return;
 		}
-
+		
 		if (!JFile::upload($file['tmp_name'], $filepath)) {
 			//handle failed upload
 			return;
