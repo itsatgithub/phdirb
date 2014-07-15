@@ -33,10 +33,10 @@ class JConfig {
 	var $dbtype = 'mysql';
 	var $host = 'localhost';
 	var $user = 'user';
-	var $db = 'phddb';
+	var $db = 'db';
 	var $dbprefix = 'jos_';
 	var $mailer = 'mail';
-	var $mailfrom = 'clara.caminal@irbbarcelona.org';
+	var $mailfrom = 'mail@irbbarcelona.org';
 	var $fromname = 'IRB Barcelona PhD Programme';
 	var $sendmail = '/usr/sbin/sendmail';
 	var $smtpauth = '0';
