@@ -3376,7 +3376,7 @@ CREATE TABLE IF NOT EXISTS `jos_plugins` (
 
 INSERT INTO `jos_plugins` (`id`, `name`, `element`, `folder`, `access`, `ordering`, `published`, `iscore`, `client_id`, `checked_out`, `checked_out_time`, `params`) VALUES
 (1, 'Authentication - Joomla', 'joomla', 'authentication', 0, 2, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
-(2, 'Authentication - LDAP', 'ldap', 'authentication', 0, 0, 1, 1, 0, 0, '0000-00-00 00:00:00', 'host=irbsvr4.irb.pcb.ub.es\nport=389\nuse_ldapV3=1\nnegotiate_tls=0\nno_referrals=0\nauth_method=search\nbase_dn=o=irbbarcelona\nsearch_string=uid=[search]\nusers_dn=\nusername=cn=admin,o=irbbarcelona\npassword=irbbarcelona\nldap_fullname=fullName\nldap_email=mail\nldap_uid=uid\n\n'),
+(2, 'Authentication - LDAP', 'ldap', 'authentication', 0, 0, 1, 1, 0, 0, '0000-00-00 00:00:00', 'host=irbsvr4.irb.pcb.ub.es\nport=389\nuse_ldapV3=1\nnegotiate_tls=0\nno_referrals=0\nauth_method=search\nbase_dn=o=irbbarcelona\nsearch_string=uid=[search]\nusers_dn=\nusername=cn=admin,o=irbbarcelona\npassword=this_is_the_password\nldap_fullname=fullName\nldap_email=mail\nldap_uid=uid\n\n'),
 (3, 'Authentication - GMail', 'gmail', 'authentication', 0, 4, 0, 0, 0, 0, '0000-00-00 00:00:00', ''),
 (4, 'Authentication - OpenID', 'openid', 'authentication', 0, 3, 0, 0, 0, 0, '0000-00-00 00:00:00', ''),
 (5, 'User - Joomla!', 'joomla', 'user', 0, 0, 1, 0, 0, 0, '0000-00-00 00:00:00', 'autoregister=1\n\n'),
