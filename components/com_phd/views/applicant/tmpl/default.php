@@ -639,9 +639,7 @@ if ($this->params->get('phdConfig_Application') == 1)
 		<tr class="sectiontableentry1">
 			<td><?php
         echo JText::_('ONGOING');
-?>: <?php
-        echo ($this->rights == 'read') ? "" : "<span style='color: red;'>*</span>";
-?>
+?>:
 			</td>
 			<td><?php
         if ($this->rights == 'write'):
@@ -1681,24 +1679,11 @@ if (count($this->applicant->referees) > 0):
 			<th width='20%' class="white"><?php
     echo JText::_('REFEREE_EMAIL');
 ?></th>
-			<th width='10%' class="white"><?php
-    echo JText::_('REFEREE_SENT_MAIL');
-?></th>
-
 			<?php
     if (($this->iamadministrator || $this->iamgroupleader || $this->iamcommittee)):
 ?>
 			<th class="white"><?php
         echo JText::_('RECOMENDATION_LETTER');
-?></th>
-			<?php
-    endif;
-?>
-			<?php
-    if (!$this->iamgroupleader && !$this->iamcommittee):
-?>
-			<th class="white"><?php
-        echo JText::_('SEND_MAIL');
 ?></th>
 			<?php
     endif;
@@ -1738,9 +1723,6 @@ if (count($this->applicant->referees) > 0):
             echo $referee->email;
 ?> <?php
         endif;
-?></td>
-		<td><?php
-        echo ($referee->sent_mail == '') ? JText::_('NOT_SENT') : date('Y-m-d', strtotime($referee->sent_mail));
 ?></td>
 
 		<?php
@@ -1803,28 +1785,6 @@ if (count($this->applicant->referees) > 0):
 ?>
 		--></td>
 		<?php
-        endif;
-?>
-
-		<?php
-        if (!$this->iamgroupleader && !$this->iamcommittee):
-?>
-		<td align='center'><a
-			href='<?php
-            echo $_SERVER['PHP_SELF'];
-?>?option=com_phd&controller=referee&task=email_referee&referee_id=<?php
-            echo $referee->id;
-?>&id=<?php
-            echo $this->applicant->id;
-?>'
-			onClick="return confirm('<?php
-            echo JText::_('REFEREE_EMAIL_MSG');
-?>')."
-			title="<?php
-            echo JText::_('SEND_MAIL');
-?>"><IMG
-			src='./components/com_phd/assets/Mail.png' border='0'></a></td>
-			<?php
         endif;
 ?>
 
@@ -2601,6 +2561,15 @@ if (($this->iamadministrator) || ($this->iamgroupleader) || ($this->iamcommittee
 ?></th>
 		</tr>
 	</thead>
+		<tr class="sectiontableentry1">
+			<td><?php
+			echo JText::_('BIRTHCOUNTRY');
+			?>:
+			<?php
+			echo $this->applicant->birth_country;
+			?>
+			</td>
+		</tr>
 	<tr class="sectiontableentry1">
 		<td><?php
     if ($this->rights == 'write'):
