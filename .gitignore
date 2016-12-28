@@ -1,2 +1,10 @@
-configuration.php
-administrator/cache/*
+/.*
+/.gitignore
+/.htaccess
+/administrator/cache/*
+/cache/*
+/installation/*
+/logs/*
+/configuration.php
+/tools/com_phd/build/*
+/tools/com_phd/zips/*
