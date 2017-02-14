@@ -2,10 +2,10 @@
 <install type="component" version="1.5.0" method="upgrade">
 	<name>PhD</name>
 	<author>GPL@vui</author>
-	<creationDate>28/04/2015</creationDate>
+	<creationDate>28/12/2016</creationDate>
 	<license>GNU/GPL</license>
-	<version>1.14</version>
-	<description>PhD and Postdoc Programme aplication. Efectuados los cambios del proyecto de Redbooth "Actualización de PhD y de Postdoc" .</description>
+	<version>1.15</version>
+	<description>PhD aplication. Cambios solicitados por Leyre Caracuel" .</description>
 
 	<!-- installation part -->
 	<install>
