@@ -66,17 +66,18 @@ class PhdViewApplicants extends JView
 			$workbook->send("applicants_" . date("Ymd") . ".xls");
 			
 			$worksheet =& $workbook->addWorksheet( JText::_( 'Applicants' ) );
-			$worksheet->write(0, 0, JText::_( 'Firstname' ));
-			$worksheet->write(0, 1, JText::_( 'lastname' ));
-			$worksheet->write(0, 2, JText::_( 'Country' ));
-			$worksheet->write(0, 3, JText::_( 'Email' ));
-			$worksheet->write(0, 4, JText::_( 'Birth date' ));
-			$worksheet->write(0, 5, JText::_( 'Age' ));
-			$worksheet->write(0, 6, JText::_( 'Where did you learn about us?' ));
-			$worksheet->write(0, 7, JText::_( 'Recommendation letters' ));
-			$worksheet->write(0, 8, JText::_( 'Programmes of choice' ));
-			$worksheet->write(0, 9, JText::_( 'Additional info' ));
-			$worksheet->write(0, 10, JText::_( 'Submit date' ));
+			$worksheet->write(0, 0, JText::_( 'Id' ));
+			$worksheet->write(0, 1, JText::_( 'Firstname' ));
+			$worksheet->write(0, 2, JText::_( 'lastname' ));
+			$worksheet->write(0, 3, JText::_( 'Country' ));
+			$worksheet->write(0, 4, JText::_( 'Email' ));
+			$worksheet->write(0, 5, JText::_( 'Birth date' ));
+			$worksheet->write(0, 6, JText::_( 'Age' ));
+			$worksheet->write(0, 7, JText::_( 'Where did you learn about us?' ));
+			$worksheet->write(0, 8, JText::_( 'Recommendation letters' ));
+			$worksheet->write(0, 9, JText::_( 'Programmes of choice' ));
+			$worksheet->write(0, 10, JText::_( 'Additional info' ));
+			$worksheet->write(0, 11, JText::_( 'Submit date' ));
 				
 			$i = 2; // line index
 			foreach( $rows as $row )
@@ -115,17 +116,18 @@ class PhdViewApplicants extends JView
 				$submit_date = new JDate( $row->submit_date );
 
 				// writing the line
-				$worksheet->write( $i, 0, $row->firstname );
-				$worksheet->write( $i, 1, $row->lastname );
-				$worksheet->write( $i, 2, $row->printable_name );
-				$worksheet->write( $i, 3, $row->email );
-				$worksheet->write( $i, 4, $row->birth_date );
-				$worksheet->write( $i, 5, $age );
-				$worksheet->write( $i, 6, $row->wheredidu );
-				$worksheet->write( $i, 7, $str_files );
-				$worksheet->write( $i, 8, $str_pro );
-				$worksheet->write( $i, 9, $row->additional_info );
-				$worksheet->write( $i, 10, $submit_date->toFormat( '%Y-%m-%d' ) );
+				$worksheet->write( $i, 0, $row->id );
+				$worksheet->write( $i, 1, $row->firstname );
+				$worksheet->write( $i, 2, $row->lastname );
+				$worksheet->write( $i, 3, $row->printable_name );
+				$worksheet->write( $i, 4, $row->email );
+				$worksheet->write( $i, 5, $row->birth_date );
+				$worksheet->write( $i, 6, $age );
+				$worksheet->write( $i, 7, $row->wheredidu );
+				$worksheet->write( $i, 8, $str_files );
+				$worksheet->write( $i, 9, $str_pro );
+				$worksheet->write( $i, 10, $row->additional_info );
+				$worksheet->write( $i, 11, $submit_date->toFormat( '%Y-%m-%d' ) );
 				
 				$i++;				
 			}
