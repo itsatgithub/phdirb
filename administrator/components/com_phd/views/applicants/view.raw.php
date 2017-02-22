@@ -78,7 +78,9 @@ class PhdViewApplicants extends JView
 			$worksheet->write(0, 9, JText::_( 'Programmes of choice' ));
 			$worksheet->write(0, 10, JText::_( 'Additional info' ));
 			$worksheet->write(0, 11, JText::_( 'Submit date' ));
-				
+			$worksheet->write(0, 12, JText::_( 'Nationality' ));
+			$worksheet->write(0, 13, JText::_( 'Gender' ));
+
 			$i = 2; // line index
 			foreach( $rows as $row )
 			{
@@ -101,6 +103,7 @@ class PhdViewApplicants extends JView
 				. " FROM #__phd_programmes p, #__phd_applicant_programme a"
 				. " WHERE a.applicant_id = $row->id"
 				. " AND a.programme_id = p.id"
+				. " ORDER BY a.order ASC"
 				;
 				$db->setQuery($query3);
 				$programmes = $db->loadObjectList();
@@ -119,7 +122,7 @@ class PhdViewApplicants extends JView
 				$worksheet->write( $i, 0, $row->id );
 				$worksheet->write( $i, 1, $row->firstname );
 				$worksheet->write( $i, 2, $row->lastname );
-				$worksheet->write( $i, 3, $row->printable_name );
+				$worksheet->write( $i, 3, $row->country );
 				$worksheet->write( $i, 4, $row->email );
 				$worksheet->write( $i, 5, $row->birth_date );
 				$worksheet->write( $i, 6, $age );
@@ -128,6 +131,8 @@ class PhdViewApplicants extends JView
 				$worksheet->write( $i, 9, $str_pro );
 				$worksheet->write( $i, 10, $row->additional_info );
 				$worksheet->write( $i, 11, $submit_date->toFormat( '%Y-%m-%d' ) );
+				$worksheet->write( $i, 12, $row->nationality );
+				$worksheet->write( $i, 13, $row->gender );
 				
 				$i++;				
 			}
